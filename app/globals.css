@@ -1,0 +1,120 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--foreground);
+  --color-muted: var(--surface);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--positive);
+
+  --color-primary: var(--positive);
+  --color-primary-foreground: var(--background);
+  --color-secondary: var(--surface);
+  --color-secondary-foreground: var(--foreground);
+  --color-accent: var(--surface);
+  --color-accent-foreground: var(--foreground);
+
+  --color-risk: var(--risk);
+  --color-positive: var(--positive);
+  --color-gold: var(--gold);
+  --color-destructive: var(--risk);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+}
+
+:root {
+  color-scheme: dark;
+  --background: #0b1210;
+  --foreground: #edf2ef;
+  --surface: #131f1b;
+  --muted-foreground: #8fa39b;
+  --border: #243530;
+  --risk: #e8694a;
+  --positive: #4fd1a5;
+  --gold: #c9a961;
+  --radius: 6px;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  html {
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    font-weight: 500;
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .field-input {
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    color: var(--foreground);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field-input:focus {
+    border-color: var(--positive);
+  }
+}
+
+/* Hachurado diagonal para área de saldo negativo */
+.hatch-negative {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(232, 105, 74, 0.28),
+    rgba(232, 105, 74, 0.28) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-screen-in {
+  animation: fade-in 0.3s ease-out;
+}
